@@ -27,3 +27,4 @@ dist-ssr
 .wizard-staging/
 !.windsurf/
 !.github/copilot-instructions.md
+.atl/

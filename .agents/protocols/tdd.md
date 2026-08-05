@@ -1,22 +1,4 @@
 # Protocol: TDD (Test-Driven Development)
-
-<!--
-  SINGLE SOURCE of the TDD Protocol. Written once here; wf-init (Builder),
-  wf-refresh and wf-settings READ IT from this file — none embed or paraphrase it.
-  Copied VERBATIM. Dual packaging: skill/SKILL.md + .agents/protocols/tdd.md.
-
-  ASSEMBLY (applied by the Builder based on state.testing):
-  - Included only if state.testing.layers has at least one layer.
-  - Part 1 (intro + matrix) ALWAYS.
-  - Then, if state.testing.tdd_mode == "standard": insert variants/standard.md.
-    If tdd_mode == "strict": insert variants/strict.md (the standard protocol is NOT
-    written; sdd-apply enforces via openspec/config.yaml → testing.strict_tdd).
-  - Part 2 (Dual-loop Playwright — only if e2e layer active — + SDD Integration)
-    ALWAYS when the E2E layer is active, regardless of mode.
-
-  ===== PART 1: intro + matrix (VERBATIM phase6a 90-109) =====
--->
-
 <if the user activated testing in Phase 4.6 (at least one layer)>:
 
 ### 🧪 TDD Protocol
@@ -78,7 +60,7 @@ based on the type of change and presents a proposal before writing any code.
 The matrix is a guideline. If there is logic that could break silently and
 the table does not cover it, the agent proposes tests anyway.
 
-<!-- STANDARD VARIANT of the TDD Protocol (VERBATIM phase6a 111-169).
+<!-- <!-- STANDARD VARIANT of the TDD Protocol (VERBATIM phase6a 111-169).
      The Builder inserts this block when state.testing.tdd_mode == "standard". -->
 
 #### Protocol per change
@@ -133,7 +115,7 @@ The agent stops and waits for a response before writing any test or code.
 
 If E2E specs were generated, when closing the cycle it is **MANDATORY** to show the
 `--headed` command with the exact path of the spec (see the "⛔ MANDATORY OUTPUT when
-closing a cycle with E2E specs" section below). Do not omit it to move on to the commit.
+closing a cycle with E2E specs" section below). Do not omit it to move on to the commit. -->
 
 <!-- ===== PART 2: Dual-loop (if e2e) + SDD Integration (VERBATIM phase6a 170-206) ===== -->
 

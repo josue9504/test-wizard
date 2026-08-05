@@ -1,3 +1,4 @@
+# Protocol: Decision Ladder + Local Orchestration (assembler)
 # Fragment: Decision Ladder (OPTIONAL feature)
 
 <!--

@@ -1,12 +1,4 @@
 # Protocol: Architecture (AGENTS.md + layers + MCPs)
-
-<!--
-  SINGLE SOURCE of truth for the context architecture rules. Consumed by the Builder
-  to build AGENTS.router.md and by wf-onboard (MCPs). Source in inventory.md:
-  phase6a 5-89 (AGENTS.md structure + Behavior Preferences + MCPs), phase46b 187-191,
-  AI_DEV_WORKFLOW 5.1-5.4 / 2.1-2.3 / 7.1-7.3.
--->
-
 ## Two layers (don't overlap)
 
 1. **Foundation · gentle-ai** (global, installed per machine): SDD orchestrator, Engram,

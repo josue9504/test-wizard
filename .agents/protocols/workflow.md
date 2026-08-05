@@ -1,12 +1,4 @@
 # Protocol: Workflow (wizard orchestration)
-
-<!--
-  SINGLE SOURCE of the permanent wizard orchestration rules. Consumed by
-  wf-init.md (orchestrator), all phases, and wf-refresh/wf-settings/wf-worktree
-  (inviolable rules). Source in inventory.md: Group A/B (Workflow mechanism/flow),
-  wf-refresh 39-52, wf-settings 26-42/477-504, wf-worktree 35-61/551-591.
--->
-
 ## Global inviolable rules (all runs)
 
 - **MANDATORY pause between phases**: wait for explicit user confirmation before

@@ -1,13 +1,4 @@
 # Protocol: Testing (stack, layers, configs)
-
-<!--
-  SINGLE SOURCE of the permanent testing rules and templates. Consumed by phase46,
-  phase46b (configs + extras), the Builder (Testing Approach in AGENTS.md), wf-settings
-  (extras). Source in inventory.md: phase46 1-5, phase46b (all), phase6a 53-55,
-  AI_DEV_WORKFLOW 7.4 / 9.x. The concrete artifacts are the *.tmpl.md and *.section.md
-  files in this directory (VERBATIM from the source).
--->
-
 ## What the testing stack adds
 
 Without testing, `checks_before_done` = `lint + build`. With testing, the SDD pipeline

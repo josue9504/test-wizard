@@ -1,13 +1,4 @@
 # Protocol: IDEs (satellites + routing per IDE)
-
-<!--
-  SINGLE SOURCE of the multi-IDE compatibility rules. Consumed by the Builder
-  (satellites + commands + protocol packaging) and by wf-refresh (derive active
-  IDEs). Source in inventory.md: phase6b (satellites), phase6c 5-18 (table),
-  phase2 45-55, phase5 15-21, AI_DEV_WORKFLOW 5.4 / 5.7. Satellite templates in
-  templates/satellites/*.tmpl. VERBATIM tables in *.section.md.
--->
-
 ## Supported IDEs/CLIs
 
 `claude-code`, `cursor`, `windsurf` (Devin), `kiro`, `opencode`, `vscode-copilot`,

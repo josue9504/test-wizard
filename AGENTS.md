@@ -1,59 +1,86 @@
-# AGENTS.md — test-wizard — React 19.2.8, Vite 8.2.0, Node.js (unspecified), npm 11
+<!--
+  This is the AGENTS.md template that the Builder (wf-init/lib/builder.md) writes to
+  the target project. It is a THIN ROUTER (constraint 7): only global policies,
+  project-specific content and routing to packaged protocols. It NEVER contains
+  the full protocols (Decision Ladder, Local Orchestration, TDD) — those live in
+  .claude/skills/<n>/ and .agents/protocols/<n>.md, and the router points to them.
+
+  The {{PLACEHOLDERS}} are filled deterministically from .wizard-state.json.
+  The  blocks are conditionals that the Builder resolves by state (not by
+  model judgment).
+-->
+
+# AGENTS.md — test-wizard — React 19.2.8, Vite 8.2.0, Vitest 4.1.10, Playwright 1.62.1
+
+## Commands
+
+- `npm run dev`
+- `npm run build`
+- `npm run lint`
+- `npm run test`
+- `npm run test:coverage`
+- `npm run test:e2e`  <!-- exact commands with real flags detected from manifest -->
 
 ## Code Style & Conventions
 
-  <!-- only non-obvious things, from reverse engineering + answers -->
+- JavaScript React function components (`.jsx`) with hooks
+- 2-space indentation, semicolon-free style
+- Component-local CSS files (`*.css`) with className-based styling
+- Relative imports inside `src/`  <!-- only non-obvious things, from reverse engineering + answers -->
 
 ## Project Structure
 
-  <!-- short tree, main folders and their purpose -->
+- `src/main.jsx`: app bootstrap
+- `src/App.jsx`: root composition
+- `src/TaskManager.jsx`: primary feature component
+- `src/__tests__/`: unit/integration tests
+- `e2e/`: Playwright end-to-end specs
+- `openspec/`: SDD specs and change records  <!-- short tree, main folders and their purpose -->
 
 ## Critical Constraints
 
-- Don't install dependencies without approval
-- Never commit or push changes to main branch
-- Never commit or push without approval
-- At the end of every change salute with 'ca chao'  <!-- what the agent must NOT do + sensitive versions -->
+  <!-- what the agent must NOT do + sensitive versions -->
 
 
 ## Testing Approach
 
 <!-- Insert testing-approach.section.md from the testing protocol, adapted to the stack -->
-## Testing Approach
-
 - Unit: Vitest + Testing Library. `npm run test`. File: `Component.test.tsx` next to the component.
 - Integration: Vitest + Testing Library with real render. `npm run test`. File: `*.integration.test.tsx` in `src/__tests__/integration/`.
 - E2E: Playwright (Chromium). `npm run test:e2e`. Specs in `e2e/<feature-name>.spec.ts`.
   One file per user flow, named by the flow — not by the component or hook.
   Examples: `persistence.spec.ts`, `task-creation.spec.ts`, `categories.spec.ts`.
 
-### `data-testid` convention (mandatory on interactive components)
-
-Every element that an E2E test interacts with (buttons, inputs, links,
-clickable elements) MUST have its own `data-testid` attribute, added
-by the agent when creating the component — not added afterwards, retroactively,
-only when a test needs it.
-
-Format: `data-testid="<context>-<element>"`, in kebab-case, specific
-without being redundant. Examples: `data-testid="task-item-delete-button"`,
-`data-testid="category-filter-select"`.
-
 
 
 ## Programmatic Checks
 
-Before declaring a task done, the agent MUST run and leave green:
-```bash
-npm run lint
-npm run build
-npm run test        # if there is unit/integration
-npm run test:e2e    # if there is e2e
-```
+- `npm run lint`
+- `npm run build`
+- `npm run test`
+- `npm run test -- --coverage`
+- `npm run test:e2e`  <!-- lint + build (+ test/test:e2e per state.testing) -->
 
-Additionally, if E2E specs were generated in this task, show the user the `--headed` command with the exact spec path before declaring done:
-```bash
-npm run test:e2e -- --headed --workers=1 --project=chromium e2e/<exact-name>.spec.ts
-```  <!-- lint + build (+ test/test:e2e per state.testing) -->
+## Project MCPs
+
+<!--
+  This section is read by /wf-onboard to know which MCPs to configure on each machine.
+  It is built according to state.discovery.stack and state.testing (see architecture protocol).
+-->
+| MCP | Purpose |
+|---|---|
+| `engram` | Persistent memory across sessions. |
+| `context7` | Framework/library docs and API reference lookup. |
+| `playwright` | Browser automation and E2E verification for real user flows. |
+
+
+## Behavior Preferences
+
+<!-- VERBATIM from the architecture protocol (Behavior Preferences). Always written. -->
+- Review gate before commit: show me the full diff and wait for my approval before committing.
+- No opportunistic refactor: stick to the new pattern only in new code.
+- If you detect that the code contradicts something in this AGENTS.md, report it at the end of
+  your reply with the tag `[AGENTS.md drift detected: <description>]`. Do not correct AGENTS.md yourself.
 
 ---
 
@@ -114,3 +141,9 @@ bloating the context. They are NOT written in full here — they live in dedicat
 
 
 
+
+<!-- The following HTML comment is mandatory and must remain as the LAST LINE of the
+     file, as-is, with real values (read by /wf-settings and /wf-refresh by reading
+     the full line `features:.*`; if missing, both commands treat all features
+     as unknown). -->
+<!-- wf-version: v0.4.1-beta.1 | source: github.com/hugoafj/ai-workflow-wizard | stack: node-react | features: ladder=yes, tdd=yes, routing=yes, ci=yes, cd=no, release=yes -->

@@ -1,13 +1,4 @@
 # Protocol: Commands (catalog + verification)
-
-<!--
-  SINGLE SOURCE of truth for the commands catalog rules. Consumed by the Builder
-  (command generation), phase2/wf-refresh (missing command verification).
-  Source in inventory.md: phase6c/phase6c2 (templates), phase2 19-75, wf-refresh
-  684-739, phase8 110. Each command has its template at
-  https://github.com/hugoafj/ai-workflow-wizard/tree/main/templates/commands/.
--->
-
 ## Commands catalog
 
 | Command | Scope | Template |

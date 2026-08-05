@@ -1,13 +1,4 @@
 # Protocol: CI/CD (pipeline + drift hook)
-
-<!--
-  SINGLE SOURCE of the CI/CD rules and templates. Consumed by wf-cicd.md (command) and
-  the Builder/hook (phase6d). Source in inventory.md: wf-cicd.md (all, 42 items),
-  phase6d 1-93, post-commit, phase6a 57-59 (Programmatic Checks), AI_DEV_WORKFLOW §10.
-  The concrete artifacts (YAML/JSON/hook) are in variants/ and hook.post-commit.tmpl.md
-  (VERBATIM from the source).
--->
-
 ## wf-cicd command rules
 
 - Pause per phase; **never push**; the user approves before writing.

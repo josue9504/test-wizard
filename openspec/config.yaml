@@ -1,21 +1,29 @@
+#
+# Placeholders (resolve from state):
+#   {{strict_tdd}}          → true/false based on TDD mode
+#   {{runner}}              → vitest | playwright | vitest+playwright
+#   {{unit}}                → true/false
+#   {{integration}}         → true/false
+#   {{e2e}}                 → true/false
+#   {{coverage_threshold}}  → number (e.g., 80) from testing.coverage_threshold
+#   {{checks_before_done}}  → list of scripts based on active layers
+#   {{project_context}}     → multi-line text with stack + architecture + testing + style
+#
 schema: spec-driven
 
 context: |
-  Project: test-wizard
-  Stack: React 19.2.8, Vite 8.2.0, Node.js (unspecified), npm 11
-  Architecture: React app with AI Workflow Wizard protocols
-  Testing layers: unit, integration, e2e
+  {{project_context}}
 
 testing:
-  strict_tdd: false
-  test_runner: vitest+playwright
+  strict_tdd: {{strict_tdd}}
+  test_runner: {{runner}}
   test_command: npm test
   coverage_command: npm run test:coverage
   e2e_command: npm run test:e2e
   layers:
-    unit: true
-    integration: true
-    e2e: true
+    unit: {{unit}}
+    integration: {{integration}}
+    e2e: {{e2e}}
   tools:
     linter: eslint
     linter_command: npm run lint
@@ -42,12 +50,11 @@ rules:
   verify:
     test_command: npm test
     build_command: npm run build
-    coverage_threshold: 0
+    coverage_threshold: {{coverage_threshold}}
   archive:
     - Warn before merging destructive deltas
 
 checks_before_done:
   - npm run lint
   - npm run build
-  - npm run test
-  - npm run test:e2e
+  {{checks_before_done}}

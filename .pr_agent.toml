@@ -1,3 +1,4 @@
+# .pr_agent.toml — PR Agent configuration
 #
 # Used by Codium-ai/pr-agent in GitHub Actions
 # Docs: https://github.com/Codium-ai/pr-agent/blob/main/docs/docs/usage-guide/configuration-options.md

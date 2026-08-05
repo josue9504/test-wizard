@@ -1,13 +1,4 @@
 # Protocol: SDD (Spec-Driven Development)
-
-<!--
-  SINGLE SOURCE of the wizard's permanent SDD rules. Consumed by phase45
-  (backend selection + /sdd-init), phase46b (config.yaml), wf-refresh and wf-settings
-  (backend migration). Source in inventory.md: phase45 (all), phase46b
-  168-229, wf-refresh 85-137, wf-settings 352-418, AI_DEV_WORKFLOW 6.1-6.7.
-  The config.yaml artifact is in config.yaml.tmpl.md (VERBATIM phase46b 199-229).
--->
-
 ## The three persistence backends
 
 | Backend | What it persists | When to choose |
