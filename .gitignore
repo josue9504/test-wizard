@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.wf-status
+.wizard-state.json
+.wizard-staging/
+!.windsurf/
+!.github/copilot-instructions.md
