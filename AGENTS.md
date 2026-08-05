@@ -1,9 +1,5 @@
 # AGENTS.md — test-wizard — React 19.2.8, Vite 8.2.0, Node.js (unspecified), npm 11
 
-## Commands
-
-  <!-- exact commands with real flags detected from manifest -->
-
 ## Code Style & Conventions
 
   <!-- only non-obvious things, from reverse engineering + answers -->
@@ -58,27 +54,6 @@ Additionally, if E2E specs were generated in this task, show the user the `--hea
 ```bash
 npm run test:e2e -- --headed --workers=1 --project=chromium e2e/<exact-name>.spec.ts
 ```  <!-- lint + build (+ test/test:e2e per state.testing) -->
-
-## Project MCPs
-
-<!--
-  This section is read by /wf-onboard to know which MCPs to configure on each machine.
-  It is built according to state.discovery.stack and state.testing (see architecture protocol).
--->
-| MCP | Purpose | Setup |
-|---|---|---|
-| Engram | Persistent project memory across sessions | Automatic via gentle-ai |
-| Context7 | Up-to-date library/framework docs | Automatic via gentle-ai |
-| GitHub | Repo, PRs, CI context and code review workflows | Connect GitHub MCP |
-| Playwright | Browser automation for E2E exploration and verification | Install `@playwright/mcp` and register MCP server |
-
-## Behavior Preferences
-
-<!-- VERBATIM from the architecture protocol (Behavior Preferences). Always written. -->
-- Review gate before commit: show me the full diff and wait for my approval before committing.
-- No opportunistic refactor: stick to the new pattern only in new code.
-- If you detect that the code contradicts something in this AGENTS.md, report it at the end of
-  your reply with the tag `[AGENTS.md drift detected: <description>]`. Do not correct AGENTS.md yourself.
 
 ---
 
@@ -139,9 +114,3 @@ bloating the context. They are NOT written in full here — they live in dedicat
 
 
 
-
-<!-- The following HTML comment is mandatory and must remain as the LAST LINE of the
-     file, as-is, with real values (read by /wf-settings and /wf-refresh by reading
-     the full line `features:.*`; if missing, both commands treat all features
-     as unknown). -->
-<!-- wf-version: 0.0.0 | source: github.com/hugoafj/ai-workflow-wizard | stack: node-react | features: ladder=yes, tdd=yes, routing=yes, ci=yes, cd=no, release=yes -->
