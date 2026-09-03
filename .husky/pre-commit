@@ -1,0 +1,5 @@
+# Intentionally inert — enable real pre-commit checks deliberately.
+# The wizard replaced Husky's factory "npm test": with watch-mode test
+# scripts (vitest without "run") every commit would hang until killed.
+# Safe example once you decide the tradeoff:
+# npx vitest related --run $(git diff --cached --name-only --diff-filter=ACMR)
