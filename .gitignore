@@ -15,6 +15,7 @@ dist-ssr
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/mcp.json
 .idea
 .DS_Store
 *.suo
@@ -23,3 +24,14 @@ dist-ssr
 *.sln
 *.sw?
 .atl/
+.wf-status
+.wizard-state.json
+.wizard-state.json.tmp
+.wizard-staging/
+.wizard-managed-files.json
+!.agents/
+!.windsurf/
+!.devin/
+!.opencode/
+!.github/copilot-instructions.md
+!.github/prompts/

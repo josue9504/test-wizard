@@ -1,60 +1,96 @@
-#
-# Placeholders (resolve from state):
-#   {{strict_tdd}}          → true/false based on TDD mode
-#   {{runner}}              → vitest | playwright | vitest+playwright
-#   {{unit}}                → true/false
-#   {{integration}}         → true/false
-#   {{e2e}}                 → true/false
-#   {{coverage_threshold}}  → number (e.g., 80) from testing.coverage_threshold
-#   {{checks_before_done}}  → list of scripts based on active layers
-#   {{project_context}}     → multi-line text with stack + architecture + testing + style
-#
 schema: spec-driven
 
 context: |
-  {{project_context}}
+  Project: test-wizard, a single-package React 19 application built with Vite 8.
+  Architecture: React function components and hooks with browser localStorage persistence.
+  Language: JavaScript/JSX application code with JavaScript/TypeScript tests.
+  Testing: Vitest, Testing Library, and Playwright are installed; no test scripts are declared.
+  Style: camelCase, relative imports, default component exports, and plain CSS.
+  Quality: ESLint is available through npm run lint; no formatter or type-check command is declared.
+
+strict_tdd: false
+
+projects:
+  - path: "."
+    stack: "Node.js / React 19 / Vite 8"
+    test_command: null
+    workspace_test_command: null
+    frameworks:
+      unit: "Vitest 4 (installed, not configured)"
+      integration: "Vitest 4 + Testing Library (installed, not configured)"
+      e2e: "Playwright 1 (installed, not configured)"
+    candidate_commands:
+      unit_integration: "npx vitest run"
+      e2e: "npx playwright test"
+      coverage: "npx vitest run --coverage"
+    coverage_command: null
+    quality:
+      linter: "npm run lint"
+      type_checker: null
+      formatter: null
+    build_command: "npm run build"
 
 testing:
-  strict_tdd: {{strict_tdd}}
-  test_runner: {{runner}}
-  test_command: npm test
-  coverage_command: npm run test:coverage
-  e2e_command: npm run test:e2e
+  detected_at: "2026-09-02T22:54:42Z"
+  strict_tdd: false
+  strict_tdd_reason: "Explicit strict_tdd=false was requested and is preserved regardless of detected runners."
+  workspace_test_command: null
+  runner:
+    command: "npm test"
+    framework: "Vitest + Playwright"
+  test_command: null
+  integration_command: null
+  e2e_command: null
+  coverage_command: null
+  candidate_commands:
+    unit_integration: "npx vitest run"
+    e2e: "npx playwright test"
+    coverage: "npx vitest run --coverage"
   layers:
-    unit: {{unit}}
-    integration: {{integration}}
-    e2e: {{e2e}}
-  tools:
-    linter: eslint
-    linter_command: npm run lint
-    type_checker: tsc
-    type_checker_command: npx tsc --noEmit
-    formatter: none
+    unit:
+      available: true
+      tool: "vitest"
+      reason: "No Vitest config or Vite test block is present."
+    integration:
+      available: true
+      tool: "vitest"
+      reason: "Dependencies and tests exist, but jsdom/setup wiring is not configured."
+    e2e:
+      available: true
+      tool: "playwright"
+      reason: "Dependency and specs exist, but no Playwright config is present."
+  coverage:
+    available: true
+    command: "npm run test:coverage"
+  coverage_threshold: 0
+  visual_regression: false
+  page_object_model: false
 
 rules:
   proposal:
-    - Include rollback plan for risky changes
+    - Include scope, risks, and rollback strategy for risky changes.
   specs:
-    - Use Given/When/Then for scenarios
-    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+    - Use Given/When/Then scenarios and RFC 2119 requirement keywords.
   design:
-    - Include sequence diagrams for complex flows
-    - Document architecture decisions with rationale
+    - Document architecture decisions and rationale.
+    - Include diagrams only when they clarify complex flows.
   tasks:
-    - Group by phase, use hierarchical numbering
-    - Keep tasks completable in one session
+    - Group tasks by phase with hierarchical numbering.
+    - Keep each task small enough to complete and verify in one session.
   apply:
-    - Follow existing code patterns
+    guidelines:
+      - Follow existing React function-component, hook, relative-import, and plain-CSS conventions.
+      - Preserve localStorage behavior unless the approved specification changes it.
     tdd: false
-    test_command: npm test
+    test_command: "npm test"
   verify:
-    test_command: npm test
-    build_command: npm run build
-    coverage_threshold: {{coverage_threshold}}
+    test_command: "npm run test:coverage"
+    integration_command: ""
+    e2e_command: ""
+    build_command: "npm run build"
+    lint_command: "npm run lint"
+    coverage_command: ""
+    coverage_threshold: 80
   archive:
-    - Warn before merging destructive deltas
-
-checks_before_done:
-  - npm run lint
-  - npm run build
-  {{checks_before_done}}
+    - Warn before merging destructive deltas.
+    - Preserve archived change directories as an immutable audit trail.
