@@ -33,9 +33,10 @@ jobs:
           github_action_config.pr_actions: '["opened", "synchronize", "reopened"]'
           github_action_config.auto_review: "true"
           github_action_config.auto_describe: "true"
-          # Configurable from state.ci.auto_improve (default true). Regenerate this
-          # workflow after toggling "AI Review Suggestions" in /wf-settings.
-          github_action_config.auto_improve: "true"
+          # auto_improve disabled: pr-agent's code-suggestions tool needs an
+          # OpenAI key with Gemini and falls back to OpenAI (OPENAI_KEY not set)
+          # which posts "Failed to generate code suggestions for PR".
+          github_action_config.auto_improve: "false"
 
       - name: Post failure comment on PR
         if: failure()

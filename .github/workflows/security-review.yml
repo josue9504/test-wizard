@@ -27,6 +27,10 @@ jobs:
           GOOGLE_AI_STUDIO.GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CONFIG.MODEL: "gemini/gemini-2.5-flash"
+          # auto_improve disabled: pr-agent's code-suggestions tool needs an
+          # OpenAI key with Gemini, falls back to OpenAI (OPENAI_KEY not set),
+          # and posts "Failed to generate code suggestions for PR".
+          github_action_config.auto_improve: "false"
           PR_REVIEWER.EXTRA_INSTRUCTIONS: >
             Act as a Certified Software Security Auditor (OSCP/CISSP).
             Your task is to perform a static security analysis (SAST) on the
